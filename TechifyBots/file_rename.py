@@ -22,7 +22,7 @@ def clean_filename(name):
 async def rename_start(client, message):
     if await get_maintenance() and message.from_user.id != Config.ADMIN:
         await message.delete()
-        return await message.reply_text("**🛠️ Bot is Under Maintenance**", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Support", user_id=int(Config.ADMIN))]]))
+        return await message.reply_text(f"<b>{message.from_user.mention},\n\nᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ.\n\n<blockquote>ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ꜰᴏʀ ᴍᴏʀᴇ ɪɴꜰᴏ.</blockquote></b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 ᴏᴡɴᴇʀ 👨‍💻", user_id=int(Config.ADMIN))]]))
     file = getattr(message, message.media.value)
     filename = file.file_name
     ban_chk = await jishubotz.is_banned(int(message.from_user.id))
